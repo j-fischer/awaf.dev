@@ -29,9 +29,21 @@ This approach is supported by the [salesforce-feature-flags](https://github.com/
 In short, **teams using AWAF actively try to keep their integration branch in a deployable state**, avoiding messy workarounds later in the pipeline. This library supports that goal.
 
 ::: tip
-The library only supports Apex and LWC. It’s not possible to hide configuration metadata behind a feature flag, such as new fields, permission set changes, etc.
+The salesforce-feature-flags library only supports Apex and LWC. It’s not possible to hide configuration metadata behind a feature flag, such as new fields, permission set changes, etc.
 :::
 
 You can learn more about this library in this session:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-jmWi111ED0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Alternative: RFLIB Feature Switches
+
+If you want hierarchical switches without extra code, the [Reliability Force Library (RFLIB)](https://github.com/j-fischer/rflib) is worth a look. RFLIB’s feature switches are built on Custom Metadata Types and evaluate configuration in a hierarchy (User → Public Group → Profile → Global), so you can override behavior at the right scope without redeploying code.
+
+- **Cross-surface support**: The same switch values can be queried from Apex, LWC, Aura, Flows, and even Validation Rules, which makes it easier to coordinate rollout logic between server and client code.
+- **Operational safety nets**: Switches double as circuit breakers for integrations; turn off external calls or entire trigger handlers during incidents using metadata instead of hotfixes.
+- **A/B and staged rollouts**: Use the hierarchical evaluation to test features with specific groups or profiles before enabling them globally.
+- **Flow and validation friendly**: Global switch values surface directly in Flow, while an Apex action handles hierarchical lookups; validation rules can call Custom Metadata API names when you need declarative control.
+- **Integrated with logging**: Built on top of RFLIB's logging framework, any decision made by the feature switch library are automatically recorded in the logs captured by the library. 
+
+For more information, check out the Wiki page on [how to get started with Feature Switches](https://github.com/j-fischer/rflib/wiki/Getting-Started-with-Feature-Switches).

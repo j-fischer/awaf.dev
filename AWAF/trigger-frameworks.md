@@ -11,3 +11,12 @@ If you are not able to switch trigger frameworks, then we recommend that you try
 You can learn more about the Trigger Actions Framework in this session:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lP615lsfRsI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Alternative: RFLIB Trigger Framework
+
+If you want a trigger framework that includes logging patterns out of the box, the [Reliability Force Library (RFLIB)](https://github.com/j-fischer/rflib/wiki/Getting-Started-with-the-Trigger-Framework) couples its trigger manager with its logging capabilities.
+
+- **Decoupled design**: Manage triggers with configurable activation, error handling, and execution order.
+- **Recursive insight**: Provides instrumentation and controls optimized for managing recursive trigger invocations.
+- **Retryable Action Framework**: Handles failing actions with up to eight retry attempts — ideal for web-service integrations and other critical asynchronous operations. Uses a similar configuration model to the Trigger Actions Framework.
+
