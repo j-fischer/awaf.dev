@@ -29,7 +29,7 @@ This approach is supported by the [salesforce-feature-flags](https://github.com/
 In short, **teams using AWAF actively try to keep their integration branch in a deployable state**, avoiding messy workarounds later in the pipeline. This library supports that goal.
 
 ::: tip
-The salesforce-feature-flags library only supports Apex and LWC. It’s not possible to hide configuration metadata behind a feature flag, such as new fields, permission set changes, etc.
+The library only supports Apex and LWC. It’s not possible to hide configuration metadata behind a feature flag, such as new fields, permission set changes, etc.
 :::
 
 You can learn more about this library in this session:
